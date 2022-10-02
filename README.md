@@ -13,11 +13,11 @@ python -m virtualenv venv
 ### Activate virtualenv
 .\venv\Scripts\activate
 
-### Install Django inside virtualenv
-pip install django
+### Install libraries inside virtualenv
+ pip install -r requirements.txt
 
-### Install Django rest inside virtualenv
-pip install djangorestframework
+### Update requirements file
+pip freeze > requirements.txt
 
 ### Run server
 python manage.py runserver
