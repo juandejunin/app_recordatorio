@@ -1,6 +1,6 @@
 # App Recordatorio
 ## Clone repository branch feature/my-new-feature
-git clone --single-branch -b feature/my-new-feature https://github.com/juandejunin/app_recordatorio.git
+git clone  https://github.com/juandejunin/app_recordatorio.git
 
 ## Setup project win
 
