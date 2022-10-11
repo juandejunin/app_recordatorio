@@ -77,6 +77,18 @@ HOST=localhost
 PORT=3306
 ```
 
+### Ejecutar el comando makemigrations 
+- Este comando se encarga de crear nuevas migraciones en función de los cambios que haya realizado en sus modelos
+```
+python manage.py makemigrations
+```
+
+### Ejecutar las migraciones
+- Este comando se encarga de aplicar y desaplicar migraciones (cambios para la base de datos).
+```
+python manage.py migrate
+```
+
 ### Ejecutar el servidor
 ```
 python manage.py runserver
