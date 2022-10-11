@@ -1,87 +1,136 @@
 # App Recordatorio
-## Clone repository
+## Clonar repositorio
+```
 git clone  https://github.com/juandejunin/app_recordatorio.git
+```
+## Configuración del proyecto en windows
 
-## Setup project win
-
-### Install virtualenv
+### Instalar el entorno  virtualenv
+```
 pip install virtualenv
-
-### Create virtual environment
+```
+### Crear el entorno virtual
+```
 python -m virtualenv venv
-
-### Activate virtualenv
+```
+### Activar virtualenv
+```
 .\venv\Scripts\activate
+```
+## Instalar y configuar dependencias necesarias
 
-### Cuando vinculamos nuestro proyecto a base de datos y a cuentas de correo electronico estamos manejando informacion sensible, por lo tanto, tenemos que instalar una libreria que nos ayude a separar la informacion sensible del codigo que vamos a compartir y dejarla en una variable de entorno.
+### Una vez dentro del entorno virtual:
 
-## Para este fin utilizaremos la libreria python-decouple.
+### Instalar las dependencias necesarias de forma automatica
 
-### documentacion oficial de la libreria:
-https://pypi.org/project/python-decouple/
+#### Esto instalaria todas las dependencias que contenga el archivo requeriments.txt
+```
+pip install -r requeriments.txt
+```
 
-### Instalar y configuar dependencias necesarias
-
-### una vez dentro del entorno virtual:
-### ejecutar
-pip list
-### para ver las dependencias que tenemos instaladas
-
-
-### Install libraries inside virtualenv
-### instalar las dependencias necesarias de forma automatica
-pip install -r requeriment.txt
-### esto instalaria todas las dependencias que contenga el archivo requeriment.txt
-
-
-### Update requirements file
-pip freeze > requirements.txt
-
-### Corroborar la correcta instalacion de las dependencias necesarias.
+### Ejecutar para ver las dependencias que tenemos instaladas
+``` 
 pip list 
+```
+
+### Actualizar las dependencias dentro del archivo requirements
+- En caso de instalar más dependencias es necesario actualizar el archivo requirements.txt
+- Para obtener los ultimos cambios en dicho archivo y volver a ejecutar e instalar y evitar errores por falta de esas librerias
+
+```
+pip freeze > requirements.txt
+```
+- No olvides ejecutar el comando;
+
+```
+pip install -r requeriments.txt
+```
+
+## Explicación sobre la libreria python-decouple.
+
+- Cuando vinculamos nuestro proyecto a base de datos y a cuentas de 
+correo electronico estamos manejando informacion sensible, por lo tanto;
+tenemos que instalar una libreria que nos ayude 
+a separar la informacion sensible del codigo que vamos a compartir y 
+dejarla en una variable de entorno.
+
+## Documentación oficial de la libreria:
+https://pypi.org/project/python-decouple/
 
 ## Una vez instalado todo lo necesario pasamos a la configuracion:
 
-### crear el archivo .env en el proyecto general
-
-### copiar la llave secrect key en el archivo .env
-
-SECRET_KEY = 'django-insecure-fk=y+dl0vgp5(bq4f_7uj@s4)_2i8fe7w@mpn^ctdh!r%6!uy2'
-
-### copiar la configuracion del DEBUG ( para desarollo no para produccion):
-
+### Crear el archivo .env en el proyecto general
+- SECRET_KEY: corresponde a la clave privada de python que genera al crear el proyecto
+- DEBUG: debe permanecer en True solo cuando esta en desarrollo; por cuestiones de seguridad False en producción
+- NAME: corresponde al nombre que asignemos en la base de datos externa
+- USER: por defecto el usuario es root
+- PASSWORD: contraseña en caso que posea
+- HOST: localhost o una IP al cual conectarse
+- PORT:  por defecto 3306 o en caso de que ese puerto se encuentre ocupado utilizar el 3307
+```
+SECRET_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 DEBUG=True
-## Configurar la base de datos externa antes del siguiente paso.
-## Configuracion de la base de datos
-
-NAME=app_recordatorio (el nombre que asignemos en la base de datos externas, se sugiere este para unificar)
+NAME=app_recordatorio
 USER=root
 PASSWORD=xxxxxxxxxxxxxxxx
 HOST=localhost
 PORT=3306
+```
 
-
-
-### Run server
+### Ejecutar el servidor
+```
 python manage.py runserver
-
-## Setup project mac and linux
-### Install virtualenv
+```
+## Configuración del proyecto en mac y linux
+### Instalar virtualenv
+```
 pip3 install virtualenv
-
-### Create virtual environment
+```
+### Crear el entorno virtual 
+```
 python3 -m virtualenv venv
-
-### Activate virtualenv
+```
+### Activar virtualenv
+```
 source venv/bin/activate
-
-### Install Django inside virtualenv
+```
+### Instalar las dependencias necesarias de forma manual
+### Instalar Django dentro del virtualenv
+```
 pip3 install django
-
-### Install Django rest inside virtualenv
+```
+### Instalar Django rest dentro del virtualenv
+```
 pip3 install djangorestframework
+```
+### Instalar las dependencias necesarias de forma automatica
 
-### Run server
+#### Esto instalaria todas las dependencias que contenga el archivo requeriments.txt
+```
+pip3 install -r requeriments.txt
+```
+
+### Ejecutar para ver las dependencias que tenemos instaladas
+``` 
+pip3 list 
+```
+
+### Actualizar las dependencias dentro del archivo requirements
+- En caso de instalar más dependencias es necesario actualizar el archivo requirements.txt
+- Para obtener los ultimos cambios en dicho archivo y volver a ejecutar e instalar y evitar errores por falta de esas librerias
+
+```
+pip3 freeze > requirements.txt
+```
+- No olvides ejecutar el comando;
+
+```
+pip3 install -r requeriments.txt
+```
+
+
+### Ejecutar el servidor
+```
 python3 manage.py runserver
-
-# Config .env
+```
+# Configuración del .env
