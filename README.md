@@ -25,7 +25,7 @@ python -m virtualenv venv
 
 #### Esto instalaria todas las dependencias que contenga el archivo requeriments.txt
 ```
-pip install -r requeriments.txt
+pip install -r requirements.txt
 ```
 
 ### Ejecutar para ver las dependencias que tenemos instaladas
