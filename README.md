@@ -43,7 +43,7 @@ pip freeze > requirements.txt
 - No olvides ejecutar el comando;
 
 ```
-pip install -r requeriments.txt
+pip install -r requirements.txt
 ```
 
 ## Explicación sobre la libreria python-decouple.
@@ -119,7 +119,7 @@ pip3 install djangorestframework
 
 #### Esto instalaria todas las dependencias que contenga el archivo requeriments.txt
 ```
-pip3 install -r requeriments.txt
+pip3 install -r requirements.txt
 ```
 
 ### Ejecutar para ver las dependencias que tenemos instaladas
@@ -137,7 +137,7 @@ pip3 freeze > requirements.txt
 - No olvides ejecutar el comando;
 
 ```
-pip3 install -r requeriments.txt
+pip3 install -r requirements.txt
 ```
 
 
@@ -145,4 +145,4 @@ pip3 install -r requeriments.txt
 ```
 python3 manage.py runserver
 ```
-# Configuración del .env
+
