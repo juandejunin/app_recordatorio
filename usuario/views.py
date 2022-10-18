@@ -1,22 +1,21 @@
+# Create your views here.
 import json
 
+from django.contrib.auth import authenticate, login, logout
 from django.forms import model_to_dict
 from django.http import JsonResponse
 from django.contrib.auth.models import User
-from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View, FormView
+from rest_framework import status, generics
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.views import APIView
 from usuario.forms import *
-# Create your views here.
-
-from django.shortcuts import render
-from django.http import JsonResponse
-
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from rest_framework.response import Response
-from .serializers import UserSerializer
-
+from .serializers import UserSerializer, LoginSerializer
+from rest_framework import generics, status, views, permissions
 # Create your views here.
 
 @api_view(['GET'])
@@ -71,4 +70,10 @@ def UserDelete(request, pk):
 	return Response('Item succsesfully delete!')
 
 
+class LoginAPIView(generics.GenericAPIView):
+    serializer_class = LoginSerializer
 
+    def post(self, request):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
