@@ -13,15 +13,15 @@ For the full list of settings and their values, see
 Para obtener la lista completa de configuraciones y sus valores, consulte
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 from decouple import config
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # Cree rutas dentro del proyecto de esta manera: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
+# BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # Configuraciones de desarrollo de inicio rápido: no aptas para producción
@@ -53,10 +53,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     'autenticar_correo',
+    'usuario',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -71,7 +74,9 @@ ROOT_URLCONF = 'app_recordatorio.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'frontend/my-project/dist')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -137,7 +142,17 @@ USE_TZ = True
 # Archivos estáticos (CSS, JavaScript, Imágenes)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'assets/'
+
+STATICFILES_DIRS = [
+     os.path.join(BASE_DIR, 'frontend/my-project/dist/assets')
+]
+
+CORS_ORIGIN_WHITELIST = [
+
+    "http://localhost:3000",
+
+]
 
 # Default primary key field type
 # Tipo de campo de clave principal predeterminado
