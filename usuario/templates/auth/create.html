@@ -1,0 +1,16 @@
+<form method="post">{% csrf_token %}
+  <div class="form-row mb-4">
+    {% for form in form.visible_fields %}
+    <div class="form-group col-md-5">
+      <label>{{ form.label }}:</label>
+      {{ form }}
+
+    </div>
+
+    {% endfor %}
+
+  </div>
+
+  <button type="submit" class="btn btn-success mt-3">Guardar</button>
+  <button type="button" onclick="location.href ='{{ list_url }}'" class="btn btn-info mt-3">Volver</button>
+</form>

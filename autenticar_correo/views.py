@@ -63,7 +63,7 @@ class send(View):
 class verificacion(View):
     # la primera funcion recibe una peticion get y renderiza nuestra vista de formulario que solicita el codigo de seguridad al usuario.
     def get(self,request):
-        return render(request, 'verificacodigo.html') 
+        return render(request, 'verificacodigo.html')
     # Esta funcion compara el codigo que envio el usuario con el que se le envio por correo
     def post(self,request):
         codigo = request.POST.get('verifica')
