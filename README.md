@@ -110,7 +110,7 @@ python manage.py runserver
 - npm fund: Actualizar lo necesario
 - npm run build: Genera un compilador de archivos de css, js, etc. Necesario para ejecutar dentro de Django
 ```
-cd app_recordatorio
+cd app_recordatorio\frontend\my-project
 npm install
 npm fund
 npm run build
