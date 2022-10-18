@@ -1,4 +1,9 @@
 # App Recordatorio
+
+## Instalar python de la documentación oficial 
+
+https://www.python.org/downloads/
+
 ## Clonar repositorio
 ```
 git clone  https://github.com/juandejunin/app_recordatorio.git
@@ -6,6 +11,10 @@ git clone  https://github.com/juandejunin/app_recordatorio.git
 ## Configuración del proyecto en windows
 
 ### Instalar el entorno  virtualenv
+```
+cd app_recordatorio
+```
+
 ```
 pip install virtualenv
 ```
@@ -17,15 +26,15 @@ python -m virtualenv venv
 ```
 .\venv\Scripts\activate
 ```
-## Instalar y configuar dependencias necesarias
+## Instalar y configurar dependencias necesarias
 
 ### Una vez dentro del entorno virtual:
 
 ### Instalar las dependencias necesarias de forma automatica
 
-#### Esto instalaria todas las dependencias que contenga el archivo requeriments.txt
+#### Esto instalaria todas las dependencias que contenga el archivo requirements.txt
 ```
-pip install -r requeriments.txt
+pip install -r requirements.txt
 ```
 
 ### Ejecutar para ver las dependencias que tenemos instaladas
@@ -43,7 +52,7 @@ pip freeze > requirements.txt
 - No olvides ejecutar el comando;
 
 ```
-pip install -r requeriments.txt
+pip install -r requirements.txt
 ```
 
 ## Explicación sobre la libreria python-decouple.
@@ -93,6 +102,20 @@ python manage.py migrate
 ```
 python manage.py runserver
 ```
+
+## Instalar React dentro de Django
+
+- cd: Cambiar de directorio
+- npm install: Instalar las librerias
+- npm fund: Actualizar lo necesario
+- npm run build: Genera un compilador de archivos de css, js, etc. Necesario para ejecutar dentro de Django
+```
+cd app_recordatorio
+npm install
+npm fund
+npm run build
+```
+
 ## Configuración del proyecto en mac y linux
 ### Instalar virtualenv
 ```
@@ -117,9 +140,9 @@ pip3 install djangorestframework
 ```
 ### Instalar las dependencias necesarias de forma automatica
 
-#### Esto instalaria todas las dependencias que contenga el archivo requeriments.txt
+#### Esto instalaria todas las dependencias que contenga el archivo requirements.txt
 ```
-pip3 install -r requeriments.txt
+pip3 install -r requirements.txt
 ```
 
 ### Ejecutar para ver las dependencias que tenemos instaladas
@@ -137,7 +160,7 @@ pip3 freeze > requirements.txt
 - No olvides ejecutar el comando;
 
 ```
-pip3 install -r requeriments.txt
+pip3 install -r requirements.txt
 ```
 
 
