@@ -29,16 +29,35 @@ ALLOWED_HOSTS = []
 # Application definition
 # Definición de la aplicación
 
-INSTALLED_APPS = [
+ALLOWED_HOSTS = ['*']
+
+
+# Application definition
+
+DJANGO_APPS =  [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
     
 ]
+PROJECT_APPS=['user']
+
+
+THIRD_PARTY_APPS=[
+    'corsheaders',
+    'rest_framework',
+    'djoser',
+    # 'social_django',
+    'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
+    # 'ckeditor',
+    # 'ckeditor_uploader',
+]
+INSTALLED_APPS= DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -139,9 +158,12 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+AUTH_USER_MODEL="user.UserAccount"
+
+# La siguiente configuracion hace que usemos el correo por consola durante la etapa de desarrollo.
 EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
 
-
+# Ya en la etapa de produccion se utiliza un servicio de correo externo.
 if not DEBUG:
     EMAIL_BACKEND = config('EMAIL_BACKEND')
     EMAIL_HOST = config('EMAIL_HOST')
