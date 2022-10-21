@@ -146,3 +146,5 @@ pip3 install -r requirements.txt
 python3 manage.py runserver
 ```
 
+## crear super usuario
+ python manage.py createsuperuser
