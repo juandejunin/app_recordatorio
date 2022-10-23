@@ -148,3 +148,5 @@ python3 manage.py runserver
 
 ## crear super usuario
  python manage.py createsuperuser
+
+## Autenticacion JWT
