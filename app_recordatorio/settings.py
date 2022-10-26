@@ -47,7 +47,7 @@ DJANGO_APPS =  [
     
 ]
 # Aplicaciones creadas por nosotros
-PROJECT_APPS=['user']
+PROJECT_APPS=['user', 'platforms', 'contract']
 
 # Aplicaciones añadidas
 THIRD_PARTY_APPS=[
@@ -117,7 +117,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-if not DEBUG:
+if DEBUG:
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
