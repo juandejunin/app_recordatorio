@@ -1,4 +1,5 @@
-# App Recordatorio
+# RemindPay 
+Bienvenidos a la plataforma de recordatorios de suscripciones de pago, encontrarás la guía de como implementar en tu entorno local y hacer pruebas. 
 ## Clonar repositorio
 ```
 git clone  https://github.com/juandejunin/app_recordatorio.git
@@ -151,33 +152,57 @@ python3 manage.py runserver
 
 
 
-# API rest Remindpay
+# API Rest Remindpay
 
 ### Funcionamiento de la API
 
 ## Endpoints registro y login
 
 ### Registro de usuario: 
+
+```
 http://127.0.0.1:8000/auth/users/
+```
+
 ### Activar usuario: 
+
+```
 http://127.0.0.1:8000/auth/users/activation/ 
+```
 ### Crear token de acceso:
+
+```
 http://127.0.0.1:8000/auth/jwt/create/
+```
 ### Realizar refresh:
+```
 http://127.0.0.1:8000/auth/jwt/refresh/ 
+```
+
 ### Verificar el refresh:
+```
 http://127.0.0.1:8000/auth/jwt/verify/
-### Ver información del usuario: 
+```
+
+### Ver información del usuario:
+
+ ```
 http://127.0.0.1:8000/auth/users/me/
+```
 
 ### Funcionamiento
 La cabecera de POST se configura de la siguiente manera:
-KEY: Content-Type
-VALUE:application/json
+- KEY: Content-Type
+- VALUE: application/json
 
 ### Registro de usuario: 
+```
 http://127.0.0.1:8000/auth/users/
+```
+
 ### Se esperan los siguientes datos:
+
+```
 {
     "email":"tu_email@gmail.com",
     "first_name":"tu_nombre",
@@ -185,28 +210,40 @@ http://127.0.0.1:8000/auth/users/
     "password":"tu_contraseña",
     "re_password":"tu_contraseña"
 }
+```
 
 ### Una vez hecho el registro llegara a el correo electronico un link similar al siguiente:
 
-"http://127.0.0.1:8000/activate/MQ/bdyjyt-95cd1361339c1ef5638bfb69c502caea"
+```
+http://127.0.0.1:8000/activate/MQ/bdyjyt-95cd1361339c1ef5638bfb69c502caea
+```
 
-### De este link se estraeran dos codigo. El primero es el contiguo a http://127.0.0.1:8000/activate/ en este caso
-MQ 
-### El segundo codigo es el que continua despues de este:
+### De este link se estraeran dos codigos. 
+- El primero es el contiguo a http://127.0.0.1:8000/activate/ en este caso
+```
+MQ
+```
+ 
+-  El segundo codigo es el que continua despues de este:
+
+```
 bdyjyt-95cd1361339c1ef5638bfb69c502caea
+```
 
-### Estos codigos se extraen para ingresarlos de la siguiente forma en el endpoint 
+-  Estos codigos se extraen para ingresarlos de la siguiente forma en el endpoint 
 
 ### Activar usuario: 
+
+```
 http://127.0.0.1:8000/auth/users/activation/ 
-
+```
 ### Espera los siguientes datos:
-
+```
 {
     "uid":"MQ",
     "token":"bdyjyt-95cd1361339c1ef5638bfb69c502caea"
 }
-
+```
 ### Si se realizo todo de forma correcta se recibira un nuevo correo informando que la cuenta fue activada
 
 Your account has been created and is ready to use!
@@ -215,35 +252,39 @@ Thanks for using our site!
 ### El siguiente endpoint nos permite crear el token de acceso
 
 ### Crear token de acceso:
+
+```
 http://127.0.0.1:8000/auth/jwt/create/
-
+```
 ### Espera los siguientes datos:
-
+```
 {
     "email":"juancito@gmail.com",
     "password":"contra123"
 }
+```
 
+ ### Retorna dos codigos, el refresh y el access
+- Resfresh: nos permite continuar logueados dentro del navegador
+- Access: es el token que necesitaremos para ingresar a nuestra cuenta
 
- ### Retorna dos codigos, el refresh y el acces
-
+```
  {
     "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY2OTQ2Nzg2NSwianRpIjoiYThlNjIwMWZjMDJmNGNlMDk3YmEzYWY3ZDhlMzQ4OGIiLCJ1c2VyX2lkIjoxfQ.lkpJ7J4EchVMcjHB8lUvubI9ElY0N2dnxMs5eNgwOgg",
     "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY3NDgwNjY1LCJqdGkiOiI5MmI5OTNmYmNmOTg0MGI3YjAzOTdiMTEyZjRjZWY5MyIsInVzZXJfaWQiOjF9.whWaaM7iK1tDJkWvm-WS3WGi6FGkWZFjGuuudEsLQAg"
-}
+ }
+```
 
-### El resfresh nos permite continuar logueados dentro del navegador
-
-### el access es el token que necesitaremos para ingresar a nuestra cuenta
 
 ## Login
 
-### en este caso es una peticion GET y en la cabecera usaremos la siguiente configuracion
+### En este caso es una peticion GET y en la cabecera usaremos la siguiente configuracion
 
-KEY: Authorization
-### y en Value tipeamos JWT dejamos un espacio y el token obtenido  
+- KEY: Authorization
+- Value: tipeamos JWT dejamos un espacio y el token obtenido  
+```
 VALUE : JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY3NDgwNjY1LCJqdGkiOiI5MmI5OTNmYmNmOTg0MGI3YjAzOTdiMTEyZjRjZWY5MyIsInVzZXJfaWQiOjF9.whWaaM7iK1tDJkWvm-WS3WGi6FGkWZFjGuuudEsLQAg
-
+```
 
 
 
